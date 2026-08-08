@@ -11,16 +11,11 @@ description: Projects, notes, and learnings from Matt Barlow.
       <span class="command-user">matt@web</span><span class="command-path">:~</span>$ whoami
     </p>
 
-    <h1 id="hero-title">Matt <span>Barlow.</span></h1>
+    <h1 id="hero-title">Matt <span>Barlow</span></h1>
 
     <p class="intro">
-      Projects, notes, and public-facing work—collected in one place.
+      Projects, notes, and public-facing work.
     </p>
-
-    <a class="primary-link" href="#learnings">
-      Read the learnings <span aria-hidden="true">↓</span>
-    </a>
-  </div>
 
   <section class="terminal" aria-labelledby="status-title">
     <div class="terminal-bar" aria-hidden="true">
@@ -47,7 +42,7 @@ description: Projects, notes, and learnings from Matt Barlow.
 <section class="learnings" id="learnings" aria-labelledby="learnings-title">
   <header class="section-header">
     <p class="section-label"><span aria-hidden="true">01.</span> Learnings</p>
-    <h2 id="learnings-title">Working notes from the edge of what I know.</h2>
+    <h2 id="learnings-title">Working notes</h2>
   </header>
 
   {% if site.posts.size > 0 %}
@@ -58,9 +53,6 @@ description: Projects, notes, and learnings from Matt Barlow.
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
             <span class="post-card-copy">
               <span class="post-card-title">{{ post.title | escape }}</span>
-              {% if post.description %}
-                <span class="post-card-description">{{ post.description | escape }}</span>
-              {% endif %}
             </span>
             <span class="post-card-arrow" aria-hidden="true">↗</span>
           </a>
