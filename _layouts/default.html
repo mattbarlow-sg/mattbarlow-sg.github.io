@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="{{ page.description | default: site.description | strip_html | normalize_whitespace | escape }}"
+    >
+    <meta name="theme-color" content="#1a1b26">
+    <title>{% if page.title and page.title != "Home" %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  </head>
+  <body class="{{ page.body_class | default: 'interior' }}">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="Matt Barlow home">
+          <span aria-hidden="true">~/</span>mattbarlow
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>home</a>
+          <a href="{{ '/#learnings' | relative_url }}">learnings</a>
+          <a href="https://github.com/mattbarlow-sg">github<span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+
+      <main class="site-main" id="main-content">
+        {{ content }}
+      </main>
+
+      <footer class="site-footer">
+        <p><span aria-hidden="true">//</span> Built on GitHub Pages</p>
+        <p>Tokyo Night · Iosevka</p>
+      </footer>
+    </div>
+  </body>
+</html>

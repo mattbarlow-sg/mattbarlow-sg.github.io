@@ -1,73 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta
-      name="description"
-      content="Matt Barlow's projects, notes, and public-facing work."
-    >
-    <meta name="theme-color" content="#1a1b26">
-    <title>Matt Barlow</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+---
+layout: default
+title: Home
+body_class: home-page
+description: Projects, notes, and learnings from Matt Barlow.
+---
 
-    <div class="site-shell">
-      <header class="site-header">
-        <a class="brand" href="/" aria-label="Matt Barlow home">
-          <span aria-hidden="true">~/</span>mattbarlow
-        </a>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="command-line">
+      <span class="command-user">matt@web</span><span class="command-path">:~</span>$ whoami
+    </p>
 
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="/" aria-current="page">home</a>
-          <a href="https://github.com/mattbarlow-sg">github<span aria-hidden="true">↗</span></a>
-        </nav>
-      </header>
+    <h1 id="hero-title">Matt <span>Barlow.</span></h1>
 
-      <main id="main-content">
-        <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-copy">
-            <p class="command-line">
-              <span class="command-user">matt@web</span><span class="command-path">:~</span>$ whoami
-            </p>
+    <p class="intro">
+      Projects, notes, and public-facing work—collected in one place.
+    </p>
 
-            <h1 id="hero-title">Matt <span>Barlow.</span></h1>
+    <a class="primary-link" href="#learnings">
+      Read the learnings <span aria-hidden="true">↓</span>
+    </a>
+  </div>
 
-            <p class="intro">
-              Projects, notes, and public-facing work—collected in one place.
-            </p>
-
-            <a class="primary-link" href="#status">
-              See what’s here <span aria-hidden="true">↓</span>
-            </a>
-          </div>
-
-          <section class="terminal" id="status" aria-labelledby="status-title">
-            <div class="terminal-bar" aria-hidden="true">
-              <div class="terminal-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <span class="terminal-title" id="status-title">status</span>
-              <span class="terminal-spacer"></span>
-            </div>
-
-            <div class="terminal-body">
-              <p><span class="prompt">❯</span> cat status.txt</p>
-              <p class="terminal-output">Theme installed.<br>Iosevka loaded.<br>Content coming next.</p>
-              <p><span class="prompt">❯</span> <span class="cursor" aria-hidden="true"></span></p>
-            </div>
-          </section>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <p><span aria-hidden="true">//</span> Built on GitHub Pages</p>
-        <p>Tokyo Night · Iosevka</p>
-      </footer>
+  <section class="terminal" aria-labelledby="status-title">
+    <div class="terminal-bar" aria-hidden="true">
+      <div class="terminal-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="terminal-title" id="status-title">status</span>
+      <span class="terminal-spacer"></span>
     </div>
-  </body>
-</html>
+
+    <div class="terminal-body">
+      <p><span class="prompt">❯</span> find learnings -type f</p>
+      <p class="terminal-output">
+        {{ site.posts.size }} learning{% if site.posts.size != 1 %}s{% endif %} published.<br>
+        More experiments in progress.
+      </p>
+      <p><span class="prompt">❯</span> <span class="cursor" aria-hidden="true"></span></p>
+    </div>
+  </section>
+</section>
+
+<section class="learnings" id="learnings" aria-labelledby="learnings-title">
+  <header class="section-header">
+    <p class="section-label"><span aria-hidden="true">01.</span> Learnings</p>
+    <h2 id="learnings-title">Working notes from the edge of what I know.</h2>
+  </header>
+
+  {% if site.posts.size > 0 %}
+    <ol class="post-list">
+      {% for post in site.posts %}
+        <li>
+          <a class="post-card" href="{{ post.url | relative_url }}">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span class="post-card-copy">
+              <span class="post-card-title">{{ post.title | escape }}</span>
+              {% if post.description %}
+                <span class="post-card-description">{{ post.description | escape }}</span>
+              {% endif %}
+            </span>
+            <span class="post-card-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="empty-state">The first learning is on its way.</p>
+  {% endif %}
+</section>

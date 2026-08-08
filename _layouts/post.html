@@ -1,0 +1,32 @@
+---
+layout: default
+body_class: post-page
+---
+
+<article class="post">
+  <header class="post-header">
+    <a class="back-link" href="{{ '/#learnings' | relative_url }}">← All learnings</a>
+    <p class="post-kicker">
+      Learning note
+      <span aria-hidden="true">·</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+    <h1>{{ page.title | escape }}</h1>
+
+    {% if page.description %}
+      <p class="post-description">{{ page.description | escape }}</p>
+    {% endif %}
+
+    {% if page.tags.size > 0 %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in page.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>
