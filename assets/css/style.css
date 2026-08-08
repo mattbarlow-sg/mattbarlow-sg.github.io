@@ -427,10 +427,10 @@ h1 span {
 }
 
 .post h1 {
-  max-width: 15ch;
-  font-size: clamp(2.75rem, 8vw, 5.25rem);
-  letter-spacing: -0.065em;
-  line-height: 0.95;
+  max-width: 24ch;
+  font-size: clamp(1.9rem, 4.5vw, 2.85rem);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
 }
 
 .post-description {
@@ -566,10 +566,6 @@ h1 span {
     width: min(calc(100% - 2rem), var(--page-width));
   }
 
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
   .learnings {
     grid-template-columns: 1fr;
   }
@@ -577,6 +573,12 @@ h1 span {
   .terminal {
     width: min(100%, 34rem);
     box-shadow: 0.65rem 0.75rem 0 rgb(22 22 30 / 55%);
+  }
+}
+
+@media (max-width: 40rem) {
+  .hero {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -600,7 +602,7 @@ h1 span {
   }
 
   .post h1 {
-    font-size: clamp(2.65rem, 14vw, 4rem);
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
   }
 
   .post-card {
