@@ -1,8 +1,9 @@
 {
-  "buildID" : "c6d7a8b0e2881019e6ea8a71ccbd27e422e1d93edd207a0e6499e619b9c33b00",
+  "buildID" : "cc8bee6fdf241fca5ea431652979393dc2565f1531fcf8fed6af0394f9f4b1b1",
   "files" : {
     ".nojekyll" : "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "404.html" : "5cdc2a050fcf99db693fa8469c67650dac63ea1b0f92a7b0890ae442e5c1d931",
+    "404.html" : "0c86a8501de2d9250046c4e716ecb708c90a25743ec430b4cbd6eef055715dd0",
+    "apple-touch-icon.png" : "26b367a46ae20d3e49e979c8bcaf5babd9fbaa729b9cbfbd4c7da9217f82fb1a",
     "css\/fonts\/Iosevka-Regular.woff2" : "139d7477bd76ed89d496045e2e7f888bac9c0106aa2ad199b70c5cc869efc2b2",
     "css\/fonts\/Iosevka-SemiBold.woff2" : "da0d316977f371ce661c27c5d4702803927cf8a9bea15818779c24745364f84b",
     "css\/fonts\/IosevkaAile-Italic.woff2" : "d217f664bbbd777a82d86999a7ce35ef564f809052d755c05c630496a780c5f9",
@@ -12,8 +13,12 @@
     "css\/site.css" : "d96757abfd9efd448f34caf2030399d34f256e4455aa1b8e44dee164624d9ae2",
     "css\/theme.css" : "c6e2a80b6ef8cf37cf143eb9908dedac0ab538aec554313bce53804732b8e37b",
     "css\/tokens.css" : "4ac5ae90494eb991ce9187a71275309dd5dc106efc16ff23d30348fa6b4cfef5",
-    "index.html" : "d98b965bcdabc501f8903b0ef473665f4acc18362336a307c29f95bb9b36f26f",
-    "learnings\/recursive-language-models-and-semantic-pattern-matching\/index.html" : "d9e87a708ed3d9f862f3214f15f96b641db87e425dfaefb45779c5acb7483092"
+    "favicon-16.png" : "c1624afa7ccd81fb751efb2f015b3cc0282819edd4d6e9a2e828a864c593ff05",
+    "favicon-32.png" : "f00a9797d41b880dacd279dcdd2620205cb9fdd22ef7825d0ae3ada24b9460ed",
+    "favicon.ico" : "954499ed7209a191ca4c0d8711f13f21f64803e374992408d12a3b1cc872838a",
+    "favicon.svg" : "32779ad880a706ae3e565bef7bab836cb8aa535c3d872d45aa3143fec3049d06",
+    "index.html" : "eec7e040ad8db5c0192a8e211c94b746316232cca5f1be81eff024823fd570cf",
+    "learnings\/recursive-language-models-and-semantic-pattern-matching\/index.html" : "a8ea38b8aadceea8a9e8b9d3a8cb0bf23d51d284ba5a7dfdb121b38a36cbc655"
   },
   "version" : 1
 }

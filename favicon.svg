@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Folded page mark"><defs>
+<linearGradient id="silver" x1=".1" y1=".9" x2=".9" y2=".1" objectBoundingBox="1"><stop stop-color="#708399"/><stop offset=".48" stop-color="#F2F5F9"/><stop offset="1" stop-color="#95C5D8"/></linearGradient>
+<linearGradient id="fold" x1="0" y1="0" x2="1" y2="1" objectBoundingBox="1"><stop stop-color="#111625"/><stop offset=".6" stop-color="#302C65"/><stop offset="1" stop-color="#8C78BB"/></linearGradient>
+<linearGradient id="flap" x1=".2" y1="0" x2=".9" y2="1" objectBoundingBox="1"><stop stop-color="#EFF6FA"/><stop offset=".65" stop-color="#F9F8FF"/><stop offset="1" stop-color="#BCC2D9"/></linearGradient></defs><rect width="64" height="64" rx="13" fill="#20232D"/>
+<polygon points="9,39 37,9 37,35 35,41 21,56 16,56 11,51 9,46" fill="url(#silver)"/>
+<polygon points="38,25 59,31 59,34 39,51" fill="url(#fold)"/>
+<polygon points="39,9 60,29 59,32 39,25 37,21 37,12" fill="url(#flap)"/>
+<path d="M10 39 L37 9" stroke="#8ADBE8" stroke-width="1.2" fill="none"/>
+</svg>
