@@ -1,0 +1,67 @@
+@import url("tokens.css");
+@font-face { font-family: "Iosevka"; src: url("fonts/Iosevka-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka"; src: url("fonts/Iosevka-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Aile"; src: url("fonts/IosevkaAile-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Aile"; src: url("fonts/IosevkaAile-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Iosevka Aile"; src: url("fonts/IosevkaAile-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+
+/* Scope theme rules to an explicitly opted-in document/container. No public copy. */
+.neo { color: var(--nc-text); background: var(--nc-canvas); font-family: var(--nc-type-reading-family); font-size: var(--nc-type-reading-size); line-height: var(--nc-type-reading-leading); font-synthesis: none; }
+.neo *, .neo *::before, .neo *::after { box-sizing: border-box; }
+.neo h1, .neo h2, .neo h3 { font-family: var(--nc-type-heading-family); font-weight: var(--nc-type-heading-weight); font-size: var(--nc-type-heading-size); line-height: var(--nc-type-heading-leading); overflow-wrap: anywhere; }
+.neo code, .neo pre, .neo button, .neo .metadata, .neo textarea { font-family: var(--nc-type-code-family); }
+.neo code, .neo pre, .neo textarea { font-size: var(--nc-type-code-size); line-height: var(--nc-type-code-leading); }
+.neo .metadata { font-family: var(--nc-type-metadata-family); font-size: var(--nc-type-metadata-size); line-height: var(--nc-type-metadata-leading); color: var(--nc-secondary); }
+.neo .secondary { color: var(--nc-secondary); }
+/* Tertiary is limited to canvas/well/panel: it fails 4.5:1 on Raised. */
+.neo .tertiary { color: var(--nc-tertiary); }
+.neo .raised { background: var(--nc-raised); }
+.neo .raised .tertiary { color: var(--nc-secondary); }
+.neo .reading { max-inline-size: var(--nc-geometry-reading-measure); background: var(--nc-panel); overflow-wrap: anywhere; }
+.neo strong { font-weight: var(--nc-type-strong-weight); }
+.neo em { font-style: var(--nc-type-emphasis-style); }
+.neo a { color: var(--nc-focus); text-decoration: underline; text-underline-offset: .2em; }
+.neo button, .neo textarea, .neo select { color: var(--nc-text); background: var(--nc-well); border: 1px solid var(--nc-border); border-radius: var(--nc-geometry-control-radius); padding: var(--nc-spacing-sm) var(--nc-spacing-md); }
+.neo button { font-family: var(--nc-type-row-family); font-weight: var(--nc-type-row-weight); font-size: var(--nc-type-row-size); line-height: var(--nc-type-row-leading); cursor: pointer; white-space: normal; overflow-wrap: anywhere; transition: background-color var(--nc-motion-state) ease-out; }
+.neo button:hover { background-color: var(--nc-raised); }
+.neo button:active { background-color: var(--nc-well); }
+.neo button.primary { color: var(--nc-on-action); background: var(--nc-action); }
+.neo button:disabled { cursor: not-allowed; color: var(--nc-secondary); background: var(--nc-panel); }
+.neo :focus-visible { outline: var(--nc-geometry-focus-width) solid var(--nc-focus); outline-offset: .25rem; }
+.neo [aria-current="true"], .neo [aria-selected="true"] { color: var(--nc-selected-text); background: var(--nc-selection); border-inline-start: var(--nc-geometry-marker-width) solid var(--nc-selected-text); font-weight: 600; }
+/* Keep row focus inset and separate from the leading selection marker. */
+.neo [aria-current="true"]:focus-visible, .neo [aria-selected="true"]:focus-visible { outline-offset: -8px; }
+.neo [aria-current="true"] .metadata, .neo [aria-selected="true"] .metadata { color: var(--nc-selected-metadata); }
+.neo ::selection { color: var(--nc-selected-text); background: var(--nc-selection-solid); }
+.neo .status-success { color: var(--nc-success); }
+.neo .status-attention { color: var(--nc-attention); }
+.neo .status-error { color: var(--nc-error); }
+.neo hr { border: 0; border-block-start: 1px solid var(--nc-rule); }
+.neo pre { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--nc-well); padding: var(--nc-spacing-lg); }
+/* Reduced transparency is satisfied by default: all surfaces are opaque, with no blur. */
+@media (prefers-reduced-motion: reduce) {
+  .neo *, .neo *::before, .neo *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media (forced-colors: active) {
+  .neo { color: CanvasText; background: Canvas; }
+  .neo [aria-current="true"], .neo [aria-selected="true"] { background: Highlight; color: HighlightText; border-inline-start-color: HighlightText; }
+  .neo [aria-current="true"] .metadata, .neo [aria-selected="true"] .metadata { color: HighlightText; }
+  .neo :focus-visible { outline-color: Highlight; }
+}
+/* Layout text is literal: retain author whitespace without adding renderer prose. */
+.neo.layout { white-space: pre-wrap; }
+.neo.layout h4, .neo.layout h5, .neo.layout h6 { font-family: var(--nc-type-heading-family); font-weight: var(--nc-type-heading-weight); line-height: var(--nc-type-heading-leading); }
+/* S5b: preserve native image/table semantics and keep wide data locally scrollable. */
+.neo.layout figure { margin-inline: 0; margin-block: var(--nc-spacing-lg); }
+.neo.layout img { display: block; max-inline-size: 100%; block-size: auto; }
+.neo.layout figcaption, .neo.layout caption { text-align: start; color: var(--nc-secondary); padding-block: var(--nc-spacing-sm); }
+.neo.layout .table-scroll { max-inline-size: 100%; overflow-x: auto; margin-block: var(--nc-spacing-lg); }
+.neo.layout table { border-collapse: collapse; inline-size: 100%; }
+.neo.layout th, .neo.layout td { text-align: start; vertical-align: top; border: 1px solid var(--nc-rule); padding: var(--nc-spacing-sm); min-inline-size: 6ch; overflow-wrap: anywhere; }
+.neo.layout th { font-weight: 600; }
+/* S5c: native disclosure marker/keyboard behavior, no scripted state or motion. */
+.neo.layout .callout, .neo.layout details { border: 1px solid var(--nc-rule); padding: var(--nc-spacing-lg); margin-block: var(--nc-spacing-lg); }
+.neo.layout .callout-label, .neo.layout summary { font-weight: 600; overflow-wrap: anywhere; }
+.neo.layout summary { cursor: pointer; }
+/* Inset the ring so narrow containers cannot clip it. Keep the native marker. */
+.neo.layout summary:focus-visible { outline-offset: -2px; }

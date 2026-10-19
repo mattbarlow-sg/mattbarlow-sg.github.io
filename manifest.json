@@ -1,0 +1,19 @@
+{
+  "buildID" : "c6d7a8b0e2881019e6ea8a71ccbd27e422e1d93edd207a0e6499e619b9c33b00",
+  "files" : {
+    ".nojekyll" : "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "404.html" : "5cdc2a050fcf99db693fa8469c67650dac63ea1b0f92a7b0890ae442e5c1d931",
+    "css\/fonts\/Iosevka-Regular.woff2" : "139d7477bd76ed89d496045e2e7f888bac9c0106aa2ad199b70c5cc869efc2b2",
+    "css\/fonts\/Iosevka-SemiBold.woff2" : "da0d316977f371ce661c27c5d4702803927cf8a9bea15818779c24745364f84b",
+    "css\/fonts\/IosevkaAile-Italic.woff2" : "d217f664bbbd777a82d86999a7ce35ef564f809052d755c05c630496a780c5f9",
+    "css\/fonts\/IosevkaAile-Regular.woff2" : "ca1e9d161907c887a29aa28ba7a814b675f564efd0518b1985f578d4c01b41f2",
+    "css\/fonts\/IosevkaAile-SemiBold.woff2" : "2bbe6a263594ff7ce43ca120cae1b5e4e72e4d02d0ffd616b38421b48a984c55",
+    "css\/fonts\/LICENSE.md" : "4ba53c7c1cb39279aae5f8d7d22054c485c71169920e5a36ed098b115e2e3c5d",
+    "css\/site.css" : "d96757abfd9efd448f34caf2030399d34f256e4455aa1b8e44dee164624d9ae2",
+    "css\/theme.css" : "c6e2a80b6ef8cf37cf143eb9908dedac0ab538aec554313bce53804732b8e37b",
+    "css\/tokens.css" : "4ac5ae90494eb991ce9187a71275309dd5dc106efc16ff23d30348fa6b4cfef5",
+    "index.html" : "d98b965bcdabc501f8903b0ef473665f4acc18362336a307c29f95bb9b36f26f",
+    "learnings\/recursive-language-models-and-semantic-pattern-matching\/index.html" : "d9e87a708ed3d9f862f3214f15f96b641db87e425dfaefb45779c5acb7483092"
+  },
+  "version" : 1
+}
