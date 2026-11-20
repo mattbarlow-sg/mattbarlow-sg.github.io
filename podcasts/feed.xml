@@ -1,0 +1,58 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{%- assign show = site.podcast -%}
+{%- assign episodes = site.podcasts | sort: "date" | reverse -%}
+{%- assign show_image = show.image | default: "/favicon.png" | absolute_url -%}
+{%- if show.explicit %}{% assign explicit = "true" %}{% else %}{% assign explicit = "false" %}{% endif %}
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ show.title | default: site.title | xml_escape }}</title>
+    <link>{{ '/podcasts/' | absolute_url }}</link>
+    <atom:link href="{{ page.url | absolute_url }}" rel="self" type="application/rss+xml"/>
+    <description>{{ show.description | default: site.description | xml_escape }}</description>
+    <language>{{ show.language | default: "en-us" }}</language>
+    {%- if episodes.size > 0 %}
+    <lastBuildDate>{{ episodes.first.date | date_to_rfc822 }}</lastBuildDate>
+    {%- endif %}
+    <image>
+      <url>{{ show_image }}</url>
+      <title>{{ show.title | default: site.title | xml_escape }}</title>
+      <link>{{ '/podcasts/' | absolute_url }}</link>
+    </image>
+    <itunes:author>{{ show.author | default: site.title | xml_escape }}</itunes:author>
+    <itunes:summary>{{ show.description | default: site.description | xml_escape }}</itunes:summary>
+    <itunes:image href="{{ show_image }}"/>
+    <itunes:category text="{{ show.category | default: 'Technology' | xml_escape }}"/>
+    <itunes:explicit>{{ explicit }}</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    {%- for episode in episodes %}
+    {%- if episode.audio %}
+    {%- assign audio_ext = episode.audio | split: "." | last | downcase -%}
+    {%- case audio_ext -%}
+      {%- when "m4a" -%}{%- assign audio_type = "audio/x-m4a" -%}
+      {%- when "ogg", "oga" -%}{%- assign audio_type = "audio/ogg" -%}
+      {%- when "wav" -%}{%- assign audio_type = "audio/wav" -%}
+      {%- else -%}{%- assign audio_type = "audio/mpeg" -%}
+    {%- endcase %}
+    <item>
+      <title>{{ episode.title | xml_escape }}</title>
+      <link>{{ episode.url | absolute_url }}</link>
+      <guid isPermaLink="true">{{ episode.url | absolute_url }}</guid>
+      <pubDate>{{ episode.date | date_to_rfc822 }}</pubDate>
+      <description>{{ episode.description | xml_escape }}</description>
+      <enclosure url="{{ episode.audio | absolute_url }}" length="{{ episode.audio_bytes | default: 0 }}" type="{{ audio_type }}"/>
+      <itunes:summary>{{ episode.description | xml_escape }}</itunes:summary>
+      <itunes:explicit>{{ explicit }}</itunes:explicit>
+      {%- if episode.duration %}
+      <itunes:duration>{{ episode.duration }}</itunes:duration>
+      {%- endif %}
+      {%- if episode.image %}
+      <itunes:image href="{{ episode.image | absolute_url }}"/>
+      {%- endif %}
+    </item>
+    {%- endif %}
+    {%- endfor %}
+  </channel>
+</rss>

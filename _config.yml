@@ -10,6 +10,21 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+collections:
+  podcasts:
+    output: true
+    permalink: /podcasts/:title/
+
+# Show-level details used by the podcast RSS feed at /podcasts/feed.xml.
+podcast:
+  title: Matt Barlow Podcasts
+  description: Podcast episodes from Matt Barlow.
+  author: Matt Barlow
+  language: en-us
+  category: Technology
+  explicit: false
+  image: /favicon.png
+
 defaults:
   - scope:
       path: ""
@@ -17,9 +32,16 @@ defaults:
     values:
       layout: post
       body_class: post-page
+  - scope:
+      path: ""
+      type: podcasts
+    values:
+      layout: podcast
+      body_class: post-page
 
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - bin
   - vendor

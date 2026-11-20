@@ -1,0 +1,48 @@
+---
+layout: default
+title: Podcasts
+body_class: post-page
+description: Podcast episodes from Matt Barlow.
+---
+
+{% assign episodes = site.podcasts | sort: "date" | reverse %}
+<section class="post podcasts" aria-labelledby="podcasts-title">
+  <header class="post-header">
+    <p class="post-kicker"><span aria-hidden="true">02.</span> Podcasts</p>
+    <h1 id="podcasts-title">Podcasts</h1>
+    <p class="post-description">
+      Listen here, or subscribe in a podcast app with the
+      <a class="feed-link" href="{{ '/podcasts/feed.xml' | relative_url }}">RSS feed</a>.
+    </p>
+  </header>
+
+  {% if episodes.size > 0 %}
+    <ol class="post-list podcast-list">
+      {% for episode in episodes %}
+        <li>
+          <a class="post-card podcast-card" href="{{ episode.url | relative_url }}">
+            {% if episode.image %}
+              <img
+                class="podcast-thumb"
+                src="{{ episode.image | relative_url }}"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+              >
+            {% else %}
+              <span class="podcast-thumb podcast-thumb-empty" aria-hidden="true">♪</span>
+            {% endif %}
+            <span class="post-card-copy">
+              <span class="post-card-title">{{ episode.title | escape }}</span>
+              <time datetime="{{ episode.date | date_to_xmlschema }}">{{ episode.date | date: "%b %-d, %Y" }}</time>
+            </span>
+            <span class="post-card-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="empty-state">The first podcast is on its way.</p>
+  {% endif %}
+</section>

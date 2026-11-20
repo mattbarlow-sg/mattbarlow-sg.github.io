@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Adds a podcast episode to the site.
+#
+#   bin/new-podcast AUDIO IMAGE "Title" ["Short description"]
+#
+# Copies the audio and image into assets/podcasts/ and writes the episode
+# file in _podcasts/. Commit and push the result to publish it.
+
+require "fileutils"
+
+audio, image, title, description = ARGV
+unless audio && image && title
+  warn 'Usage: bin/new-podcast AUDIO IMAGE "Title" ["Short description"]'
+  exit 1
+end
+
+[audio, image].each do |path|
+  abort "File not found: #{path}" unless File.file?(path)
+end
+
+root = File.expand_path("..", __dir__)
+slug = title.downcase.gsub(/[^a-z0-9]+/, "-").gsub(/\A-|-\z/, "")
+abort "The title needs at least one letter or number." if slug.empty?
+
+now = Time.now
+today = now.strftime("%Y-%m-%d")
+episode = File.join(root, "_podcasts", "#{today}-#{slug}.md")
+abort "Episode already exists: #{episode}" if File.exist?(episode)
+
+assets = File.join(root, "assets", "podcasts")
+FileUtils.mkdir_p(assets)
+audio_name = "#{slug}#{File.extname(audio).downcase}"
+image_name = "#{slug}#{File.extname(image).downcase}"
+FileUtils.cp(audio, File.join(assets, audio_name))
+FileUtils.cp(image, File.join(assets, image_name))
+
+megabytes = File.size(audio) / 1_048_576.0
+warn "Warning: GitHub rejects files over 100 MB (this one is #{megabytes.round} MB)." if megabytes > 100
+
+File.write(episode, <<~EPISODE)
+  ---
+  title: #{title.inspect}
+  date: #{now.strftime("%Y-%m-%d %H:%M:%S %z")}
+  description: #{(description || "A short description of this episode.").inspect}
+  audio: /assets/podcasts/#{audio_name}
+  audio_bytes: #{File.size(audio)}
+  image: /assets/podcasts/#{image_name}
+  ---
+EPISODE
+
+puts "Created #{episode.delete_prefix("#{root}/")}"
+puts "Edit the description there, then commit and push to publish."

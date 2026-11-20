@@ -1,0 +1,57 @@
+---
+layout: default
+body_class: post-page
+---
+
+{%- assign audio_ext = page.audio | split: "." | last | downcase -%}
+{%- case audio_ext -%}
+  {%- when "m4a" -%}{%- assign audio_type = "audio/mp4" -%}
+  {%- when "ogg", "oga" -%}{%- assign audio_type = "audio/ogg" -%}
+  {%- when "wav" -%}{%- assign audio_type = "audio/wav" -%}
+  {%- else -%}{%- assign audio_type = "audio/mpeg" -%}
+{%- endcase %}
+<article class="post podcast">
+  <header class="post-header">
+    <a class="back-link" href="{{ '/podcasts/' | relative_url }}">← All podcasts</a>
+    <p class="post-kicker">
+      Podcast
+      <span aria-hidden="true">·</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+    <h1>{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="podcast-body">
+    {% if page.image %}
+      <img
+        class="podcast-image"
+        src="{{ page.image | relative_url }}"
+        alt="{{ page.image_alt | default: page.title | escape }}"
+        width="500"
+      >
+    {% endif %}
+
+    {% if page.description %}
+      <p class="post-description">{{ page.description | escape }}</p>
+    {% endif %}
+
+    {% if page.audio %}
+      <div class="podcast-player">
+        <audio controls preload="metadata">
+          <source src="{{ page.audio | relative_url }}" type="{{ audio_type }}">
+          Your browser cannot play this audio. Use the download link instead.
+        </audio>
+        <a class="primary-link" href="{{ page.audio | relative_url }}" download>
+          Download episode <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  {% assign notes = content | strip %}
+  {% if notes != "" %}
+    <div class="post-content">
+      {{ content }}
+    </div>
+  {% endif %}
+</article>
