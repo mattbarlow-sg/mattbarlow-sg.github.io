@@ -17,7 +17,7 @@ collections:
 
 # Show-level details used by the podcast RSS feed at /podcasts/feed.xml.
 podcast:
-  title: Matt Barlow Podcasts
+  title: Synthetic Podcasts
   description: Podcast episodes from Matt Barlow.
   author: Matt Barlow
   language: en-us
